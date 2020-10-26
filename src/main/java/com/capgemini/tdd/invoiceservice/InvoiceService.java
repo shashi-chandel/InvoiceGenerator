@@ -1,6 +1,6 @@
 package com.capgemini.tdd.invoiceservice;
 
-public class InvoiceGenerator {
+public class InvoiceService {
 	public final double MINIMUM_COST_PER_KILOMETER = 10.0;
 	public final int COST_PER_TIME = 1;
 	public final double MINIMUM_FARE = 5;
@@ -16,5 +16,13 @@ public class InvoiceGenerator {
 			totalFare += this.calculateFare(ride.distance, ride.time);
 		}
 		return new InvoiceSummary(rides.length, totalFare);
+	}
+
+	public void addRides(String userId,Ride[] rides) {
+	
+	}
+
+	public InvoiceSummary getInvoiceSummary(String userId) {
+		return null;
 	}
 }
