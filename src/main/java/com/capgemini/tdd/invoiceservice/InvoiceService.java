@@ -19,7 +19,7 @@ public class InvoiceService {
 	}
 
 	public void addRides(String userId,Ride[] rides) {
-	
+	  
 	}
 
 	public InvoiceSummary getInvoiceSummary(String userId) {
