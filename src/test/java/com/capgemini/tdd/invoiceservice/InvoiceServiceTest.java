@@ -37,8 +37,7 @@ public class InvoiceServiceTest {
 	}
 
 	@Test
-	public void givenUsedIdAndRides_ShouldReturnInvoiceSummary() {
-
+	public void givenUserIdAndRides_ShouldReturnInvoiceSummary() {
 		String userId = "a@s.com";
 		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
 		invoiceService.addRides(userId, rides);
