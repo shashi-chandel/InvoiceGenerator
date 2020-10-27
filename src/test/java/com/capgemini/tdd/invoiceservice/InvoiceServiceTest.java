@@ -5,11 +5,22 @@ import org.junit.Assert;
 import org.junit.Before;
 
 public class InvoiceServiceTest {
+	Ride[] rides = null;
+	InvoiceSummary expectedInvoiceSummary = null;
 	InvoiceService invoiceService = null;
+	private RideRepository rideRepository = null;
 
 	@Before
 	public void setUp() throws Exception {
 		invoiceService = new InvoiceService();
+		rideRepository = new RideRepository();
+		invoiceService.setRideRepository(rideRepository);
+		rides = new Ride[] {
+				new Ride(2.0, 5,CabRide.NORMAL),
+				new Ride(0.1, 1,CabRide.PREMIUM)
+		};
+		
+		expectedInvoiceSummary = new InvoiceSummary(2, 45.0);
 	}
 
 	@Test
@@ -30,20 +41,17 @@ public class InvoiceServiceTest {
 
 	@Test
 	public void givenMultipleRides_ShouldReturnInvoiceSummary() {
-		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
 		InvoiceSummary summary = invoiceService.calculateFare(rides);
-		InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
+		InvoiceSummary expectedSummary = new InvoiceSummary(2, 45.0);
 		Assert.assertEquals(expectedSummary, summary);
 	}
 
 	@Test
-	public void givenUsedIdAndRides_ShouldReturnInvoiceSummary() {
-
+	public void givenUserIdAndRidesForTwoCategoriesRides_ShouldReturnInvoiceSummary() {
 		String userId = "a@s.com";
-		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
 		invoiceService.addRides(userId, rides);
 		InvoiceSummary summary = invoiceService.getInvoiceSummary(userId);
-		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
 		Assert.assertEquals(expectedInvoiceSummary, summary);
 	}
+
 }
