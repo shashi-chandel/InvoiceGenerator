@@ -4,9 +4,6 @@ public class InvoiceService {
 	public final double NORMAL_MINIMUM_COST_PER_KILOMETER = 10.0;
 	public final int NORMAL_COST_PER_TIME = 1;
 	public final double NORMAL_MINIMUM_FARE = 5;
-	public final double PREMIUM_MINIMUM_COST_PER_KILOMETER = 15.0;
-	public final int PREMIUM_COST_PER_TIME = 2;
-	public final double PREMIUM_MINIMUM_FARE = 20;
 	private RideRepository rideRepository;
 
 	public double calculateFare(double distance, int time) {
